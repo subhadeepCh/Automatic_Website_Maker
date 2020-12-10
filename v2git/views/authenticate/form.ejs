@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <title><%if(user[0]){%>
+		<%=user[0].name.toUpperCase()%><%}%>
+		<%if(!(user[0])){%>
+			COMING SOON
+		<%}%>
+		</title>
+		<link rel="shortcut icon" href="../images/LOGO.png">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/main.css" />
+		<style type="text/css">
+			body{
+				background: #4b6cb7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+    </head>
+    <body class="landing is-preload">
+		
+  
+        <!--============================================================================-->
+		<div class="container text-center">
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert" style="width:90%;z-index:99999;position:relative"><%=error%></div>
+			<%}%>
+			<%if(success && success.length>0){%>
+			<div class="alert alert-success" role="alert" style="width:90%;z-index:99999;position:relative"><%=success%></div>
+			<%}%>
+		</div>
+        <div class="loaderwrapper">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>    
+        </div>
+
+        <!--===========================================================================-->
+
+        <div id="page-wrapper" style="background: #4b6cb7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+            <!-- Header -->
+            <header id="header">
+                <h1><a href="/"><%=user[0].name.substring(0,user[0].name.indexOf(' '))%></a> <%=user[0].name.substring(user[0].name.indexOf(' '))%></h1>
+                <nav id="nav">
+                    <ul>
+						<%if(currentuser){%>
+						<li>Joined as : <%=currentuser.username%></li>
+						<%}%>
+                        <li><a href="/">Overview</a></li>
+                      
+						<%if(currentuser){%>
+						<li><a href="/logout" class="button">Log Out</a></li>
+						<%}%>
+                    </ul>
+                </nav>
+            </header>
+<!--================================================================-->
+<!--=================================================================-->
+			<section id="main" class="container"  >
+				
+				<div   style="margin:15vw;"></div>
+				<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui secondary image header">
+     
+      <div class="content" id="signup">
+      </div>
+    </h2>
+	<div class="ui message">
+	<ul>
+		<li><strong>If you wish not to fill any one of the information, put "#" without quotes in the field</strong></li>	
+		<li><strong>To get your social id, visit the social media page and get details from share profile</strong></li>
+		<li><strong>For example https://www.linkedin.com/in/SteveJobs</strong></li>
+		<li><strong>Putting image is optional, if you have already posted your profile picture, no need to update</strong></li>
+	</ul>
+    </div>
+    <form class="ui large form" action="/register?_method=PUT" method="post" enctype="multipart/form-data">
+      <div class="ui stacked segment">
+		   
+		   <!--======================USERNAME======================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-user-circle" aria-hidden="true"></i></i>
+            <input type="text" name="name" placeholder="Full Name" value="<%=user[0].name%>">
+          </div>
+        </div>
+		   <!--=====================CONTACT EMAIL======================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-user-circle" aria-hidden="true"></i></i>
+            <input type="email" name="email" placeholder="Contact Email" value="<%=user[0].email%>">
+          </div>
+        </div>
+		   <!--========================TWITTER ID====================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon brands fa-twitter"></i>
+            <input type="text" name="twitter" placeholder="TwitterId" value="<%=user[0].twitter%>">
+          </div>
+        </div>
+		   <!--===========================FACEBOOK ID=================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-facebook"></i>
+            <input type="text" name="facebook" placeholder="FacebookId" value="<%=user[0].facebook%>">
+          </div>
+        </div>
+		   <!--============================GITHUB ID================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon brands fa-github"></i>
+            <input type="text" name="github" placeholder="GithubId" value="<%=user[0].github%>">
+          </div>
+        </div>
+		   <!--========================LINKED IN====================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-linkedin"></i>
+            <input type="text" name="linkedin" placeholder="LinkedIn" value="<%=user[0].linkedin%>">
+          </div>
+        </div>
+		   <!--==========================INSTAGRAM==================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-instagram"></i>
+            <input type="text" name="insta" placeholder="Instagram Id" value="<%=user[0].insta%>">
+          </div>
+        </div>
+		   <!--==========================TAGLINE==================================-->
+		   <div class="field">
+          <div class="ui left icon input transparent disabled">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-id-card" aria-hidden="true"></i></i>
+            <input type="text" name="random" placeholder="Yourself in One Line">
+          </div>
+        </div>
+		   <div class="field">
+          <div class="ui left icon input">
+			  <textarea rows="2" name="tagline"><%=user[0].tagline%></textarea>
+			   </div>
+        </div>
+		   <!--==========================Description heading==================================-->
+		   <div class="field">
+          <div class="ui left icon input transparent disabled">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-audio-description" aria-hidden="true"></i></i>
+            <input type="text" name="random" placeholder="Heading of your description">
+          </div>
+        </div>
+		  <div class="field">
+          <div class="ui left icon input">
+            <textarea rows="2" name="oneliner" ><%=user[0].oneliner%></textarea>
+          </div>
+        </div>
+		 
+		   <!--==========================Description==================================-->
+		    <div class="field">
+          <div class="ui left icon input transparent disabled">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-cog" aria-hidden="true"></i></i>
+            <input type="text" name="random" placeholder="Your Description">
+          </div>
+        </div>
+		   <div class="field">
+          <div class="ui left icon input">
+			  <textarea rows="4" name="desc" ><%=user[0].desc%></textarea>
+			   </div>
+        </div>
+		   <!--===========================Image=================================-->
+		   <div class="field">
+          <label for="file-upload" class="custom-file-upload ui button">
+    Update Profile Picture
+</label>
+<input id="file-upload" type="file" name="image" accept="image/*"/>
+        </div>
+		    <!-- =============-->
+		  <div style="margin-bottom:3px;" id="bar">
+		  <div id="myProgress">
+          <div id="myBar">10%</div>
+		   </div>
+			  </div>
+		  <!--===============-->
+		   <!--============================================================-->
+		  <div><button class="ui fluid  secondary submit button " onclick="move()">Update</button></div>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!--================================================================-->
+<!-- Footer --><div style="margin-bottom:2em"></div>
+             <footer id="footer" style="background-color: black;color: white;">
+                <ul class="icons">
+                    <li><a href="<%=user[0].twitter%>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="<%=user[0].facebook%>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="<%=user[0].insta%>" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="<%=user[0].github%>" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="<%=user[0].linkedin%>" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled. All rights reserved.</li><li><a href="https://www.linkedin.com/in/subhadeepchoudhuri">Design: Subhadeep Choudhuri</a></li>
+                </ul>
+            </footer>
+		</div>
+		 <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/js/float-panel.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.dropotron.min.js"></script>
+        <script src="/js/jquery.scrollex.min.js"></script>
+        <script src="/js/browser.min.js"></script>
+        <script src="/js/breakpoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+	</body>
+</html>

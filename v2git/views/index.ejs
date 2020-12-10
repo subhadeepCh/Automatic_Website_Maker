@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+		<link rel="shortcut icon" href="/images/LOGO.png">
+        <title><%if(userr&&userr[0]){%>
+		<%=userr[0].name.toUpperCase()%><%}%>
+		<%if(!(userr&&userr[0])){%>
+			COMING SOON
+		<%}%>
+		</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body class="landing is-preload">
+		<div class="container text-center" >
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert" style="width:90%;z-index:99999;position:fixed"><%=error%></div>
+			<%}%>
+			<%if(success && success.length>0){%>
+			<div class="alert alert-success" role="alert" style="width:90%;z-index:99999;position:fixed"><%=success%></div>
+			<%}%>
+		</div>
+        <!--============================================================================-->
+        <div class="loaderwrapper">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>    
+        </div>
+<!--=============================================================================================-->
+		<%if(!userr[0]){%>
+		<style>
+			body{
+				background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+		</style>
+		 <section id="main" class="container">
+			 
+               <div   style="margin:10em;"></div>
+                <section class="box special features" style="margin-top:20em;padding: 3em;background: #FF0099;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #493240, #FF0099);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #493240, #FF0099); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ ">
+					<a class="ui secondary button" style="color:white" href="/login"><h1 style="color:white">
+						Please SignUp First
+					</h1></a>
+			 </section></section>
+		<%}%>
+		<%if(userr[0]){%>
+		<style>
+			#banner {
+    background-attachment: scroll,fixed;
+    background-color: #666;
+    background-image: url("/images/overlay.png")<%if(back[0].image){%>, url("<%=back[0].image%> ")<%}%> ;
+    background-position: top left,						center center;
+    background-repeat: repeat,							no-repeat;
+    background-size: auto,							cover;
+    color: #fff;
+    padding: 12em 0 20em 0;
+    text-align: center;
+}
+		</style>
+        <!--===========================================================================-->
+		<%if(back[0]){%>
+        <div id="page-wrapper" style="background-color:<%=back[0].color%>"><%}%>
+		<%if(!back[0]){%>
+		<div id="page-wrapper" style="background-color:#fffaf0">
+<%}%>
+            <!-- Header -->
+            <header id="header" class="alt">
+                <h1><a href="/"><%=userr[0].name.substring(0,userr[0].name.indexOf(' '))%></a> <%=userr[0].name.substring(userr[0].name.indexOf(' '))%></h1>
+                <nav id="nav">
+                    <ul>
+						<%if(currentuser){%>
+						<li>Joined as : <%=currentuser.username%></li>
+						<%}%>
+                        <li><a href="/" class="button">Overview</a></li>
+                        <li>
+                            <a href="#" class="icon solid fa-angle-down">Navigate</a>
+                            <ul id="navigation">
+								<li><a href="#first">About</a></li>
+                                <li><a href="#third"><%=two.category%></a></li>
+                                <li><a href="#fourth"><%=three.category%></a></li>
+                                <li><a href="/four"><%=four.category%></a></li>
+                                <li><a href="#second">Contact</a></li>
+                            </ul>
+                        </li>
+						<%if(!currentuser){%>
+                        <li><a href="/login" class="button">Sign In</a></li>
+							<%}%>
+						<%if(currentuser){%>
+						<li><a href="/editback" class="button">Edit Background</a></li>
+						<li><a href="/user" class="button">Edit Profile</a></li>
+						<li><a href="/logout" class="button">Log Out</a></li>
+						<%}%>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Banner -->
+            <section id="banner" style="margin-bottom: 5em;">
+                <h2 style="color: <%=back[0].tcolor%>" class="ml11">
+                    <span class="text-wrapper">
+                        <span class="letters"><%=userr[0].name%>| </span>
+                    </span></h2>
+                <p style="color: <%=back[0].tcolor%>" class="ml6"> <span class="text-wrapper">
+                    <span class="letters"><%-userr[0].tagline%>.</span>
+                    </span></p>
+                <ul class="actions special" style="margin-top: 5em">
+                    <li><a  href="#start" style="color:<%=back[0].tcolor%>" class="icon solid fa-arrow-circle-down"></a></li>
+                </ul>
+            </section>
+
+            <!-- Main -->
+            <section id="main" class="container" >
+                <!--============================================ONE==================================================================-->
+
+                <div   style="margin:10em;"></div>
+                <h1 id="start" style="font-size: 12vw;margin-left: 10px;margin-bottom: 0;font-family: 'Barlow', sans-serif;
+                                      <%if(back[0]){%>color:<%=back[0].tcolor%><%}%><%if(!back[0]){%>color:#000000<%}%>" > <%=one.category%>.</h1>
+                <section class="box special features" style="<%if(back[0]){%>background-color:<%=back[0].color%><%}%><%if(!back[0]){%>background-color:#fffaf0<%}%>;box-shadow: none;padding-top: 5px; ">
+                    <div class="row" style="overflow-y:hidden;overflow-x:hidden;">
+                        <div class="col-lg-12 zoom1" style="background-color:<%=one.oneBack%>">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button " href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="1")){%>	
+	<%=item._id%>/show
+	<%}});}%>">Read More</a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color:<%=one.oneText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="1")){%>	
+	<%=item.title%>
+	<%}});}%>
+</h1><br /><br />
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="1")&&(item.icon)){%>	
+	<i class="<%=item.icon%>" style="font-size: 10em;color:<%=one.icon%>;"></i>
+	<%}});}%>
+                                <br /><br />
+                                <p style="font-size: 1.2em; color:<%=one.oneText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="1")){%>	
+	<%=item.subtitle%>
+	<%}});}%>
+			</p>
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=one.twoBack%>;height: inherit;position: relative;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="2")){%>	
+	<%=item._id%>/show
+	<%}});}%>">Read More</a></span>
+                            <div class="container  zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color:<%=one.twoText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="2")){%>	
+	<%=item.title%>
+	<%}});}%>
+								</h1><br /><br />
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="2")&&(item.icon)){%>	
+	<i class="<%=item.icon%>" style="font-size: 10em;;color:<%=one.icon%>;"></i>
+	<%}});}%>
+                                <br /><br />
+                                <p style="font-size: 1.2em; color:<%=one.twoText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="2")){%>	
+	<%=item.subtitle%>
+	<%}});}%>
+								</p>
+                            </div> 
+                        </div>
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=one.threeBack%>;height:inherit;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="3")){%>	
+	<%=item._id%>/show
+	<%}});}%>">Read More</a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color:<%=one.threeText%>;font-family: 'Nunito', sans-serif;">
+			<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="3")){%>	
+	<%=item.title%>
+	<%}});}%>		
+			</h1><br />
+				<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="3")&&(item.icon)){%>	
+	<i class="<%=item.icon%>" style="font-size: 10em;;color:<%=one.icon%>;"></i>
+	<%}});}%>
+                                <br /><br />
+                                <p style="font-size: 1.2em; color:<%=one.threeText%>;font-family: 'Nunito', sans-serif;">
+		<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===one.category)&&(item.display==="3")){%>	
+	<%=item.subtitle%>
+	<%}});}%>	
+		</p>
+                            </div> 
+                        </div>
+                        <div class="col-lg-12 zoom1 " style="background:url(../images/ww.jpg);background-size:contain;background-repeat: round; height: 25em;">
+                            <div class="container zoom" align="center" style="padding: 5em;">
+								<a href="/one"> <h1 style="font-size: 3em;font-weight: 700; color: white;font-family: 'Nunito', sans-serif;"><%=one.title%>.</h1></a><br />
+                                <br /><br />
+                                <p style="font-size: 1.2em; color: white;font-family: 'Nunito', sans-serif;"><%=one.desc%>.</p>
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+                <!--==========================================================================================================--> <h6 id="third"></h6>
+                <div   style="margin:10em;"></div>
+                <h1 id="start" style="font-size: 12vw;margin-left: 10px;margin-bottom: 0;font-family: 'Barlow', sans-serif;
+                                      <%if(back[0]){%>color:<%=back[0].tcolor%><%}%><%if(!back[0]){%>color:#000000<%}%>;" > <%=two.category%>.</h1>
+                <section class="box special features" style="<%if(back[0]){%>background-color:<%=back[0].color%><%}%><%if(!back[0]){%>background-color:#fffaf0<%}%>;box-shadow: none;padding-top: 5px;">
+                    <div class="row" style="overflow-y:hidden;overflow-x:hidden;">
+                        <div class="col-lg-12 zoom1" style="background-color:<%=two.oneBack%>;">
+                           <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button " href="/two">Read All </a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color: <%=two.oneText%>;font-family: 'Nunito', sans-serif;"><%=two.title%></h1>
+                                <span ><div class="sk-cube-grid">
+                                    <div class="sk-cube sk-cube1"></div>
+                                    <div class="sk-cube sk-cube2"></div>
+                                    <div class="sk-cube sk-cube3"></div>
+                                    <div class="sk-cube sk-cube4"></div>
+                                    <div class="sk-cube sk-cube5"></div>
+                                    <div class="sk-cube sk-cube6"></div>
+                                    <div class="sk-cube sk-cube7"></div>
+                                    <div class="sk-cube sk-cube8"></div>
+                                    <div class="sk-cube sk-cube9"></div>
+                                    </div>
+                                </span>
+                                <p style="font-size: 1.5em; color:<%=two.oneText%>;font-family: 'Nunito', sans-serif;"><strong><%=two.desc%></strong></p>
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=two.twoBack%>;height: inherit;position: relative;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="1")){%>	
+	<%=item._id%>/show
+	<%}});}%>">View More</a></span>
+                            <div class="container  zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 class="ml9" style="font-size: 3em;font-weight: 700; color:<%=two.twoText%>;font-family: 'Nunito', sans-serif;"><span class="text-wrapper">
+                                    <span class="letters">
+									<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="1")){%>	
+	<%=item.title%>
+	<%}});}%>	
+									</span> <span class="letters"></span>
+                                    </span></h1><br /><hr>
+
+                                <p style="font-size: 1.2em; color:<%=two.twoText%>;font-family: 'Nunito', sans-serif;">
+		<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="1")){%>	
+	<%=item.subtitle%>
+	<%}});}%>		
+						</p>
+                            </div> 
+                        </div>
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=two.threeBack%>;height:inherit;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="2")){%>	
+	<%=item._id%>/show
+	<%}});}%>">View More</a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 class="ml10" style="font-size: 3em;font-weight: 700; color: <%=two.threeText%>;font-family: 'Nunito', sans-serif;"><span class="text-wrapper"><span class="letters">
+<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="2")){%>	
+	<%=item.title%>
+	<%}});}%>	
+									</span></span></h1><hr>
+
+                                <p style="font-size: 1.2em; color:<%=two.threeText%>;font-family: 'Nunito', sans-serif;">
+		<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===two.category)&&(item.display==="2")){%>	
+	<%=item.subtitle%>
+	<%}});}%>	
+								</p>
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+
+                <!--==========================================================================================================--> <h6 id="fourth"></h6>
+                <div   style="margin:10em;"></div>
+                <h1 id="start" style="font-size: 12vw;margin-left: 10px;margin-bottom: 0;font-family: 'Barlow', sans-serif;
+                                      <%if(back[0]){%>color:<%=back[0].tcolor%><%}%><%if(!back[0]){%>color:#000000<%}%>;" > <%=three.category%>.</h1>
+                <section class="box special features" style="<%if(back[0]){%>background-color:<%=back[0].color%><%}%><%if(!back[0]){%>background-color:#fffaf0<%}%>;box-shadow: none;padding-top: 5px; ">
+                    <div class="row" style="overflow-y:hidden;overflow-x:hidden;">
+                        <div class="col-lg-12 zoom1" style="background-color:<%=three.oneBack%>;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/three">View all</a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color:<%=three.oneText%>;font-family: 'Nunito', sans-serif;"><%=three.title%></h1>
+                                <span ><h1 class="ml8">
+                                    <span class="letters-container">
+                                        <span class="letters letters-left">Hii</span>
+                                        <span class="letters bang">!</span>
+                                    </span>
+                                    <span class="circle circle-white"></span>
+                                    <span class="circle circle-dark"></span>
+                                    <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+                                    </h1>
+                                </span>
+                                <p style="font-size: 1.5em; color: <%=three.oneText%>;font-family: 'Nunito', sans-serif;"><%=three.desc%></p>
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=three.twoBack%>;height: inherit;position: relative;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="1")){%>	
+	<%=item._id%>/show
+	<%}});}%>">Read More</a></span>
+                            <div class="container  zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1  style="font-size: 3em;font-weight: 700; color:<%=three.twoText%>;font-family: 'Nunito', sans-serif;">
+		<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="1")){%>	
+	<%=item.title%>
+	<%}});}%>	
+</h1><br /><hr>
+
+                                <p style="font-size: 1.2em; color:<%=three.twoText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="1")){%>	
+	<%=item.subtitle%>
+	<%}});}%>	
+								</p>
+                            </div> 
+                        </div>
+                        <div class="col-lg-6 col-md-12 zoom1" style="background-color:<%=three.threeBack%>;height:inherit;">
+                            <span style="z-index:999;margin: 0;padding: 0;position: absolute;top:0;right:0;" class="p1"><a class="ui secondary button" href="/
+								<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="2")){%>	
+	<%=item._id%>/show
+	<%}});}%>">Read More</a></span>
+                            <div class="container zoom" align="center" style="padding: 5em;position: relative;">
+                                <h1 style="font-size: 3em;font-weight: 700; color:<%=three.threeText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="2")){%>	
+	<%=item.title%>
+	<%}});}%>	
+	</h1><br /><hr>
+
+                                <p style="font-size: 1.2em; color:<%=three.threeText%>;font-family: 'Nunito', sans-serif;">
+	<%if(post){%>
+	<%post.forEach(function(item){%>
+	<%if((item.category===three.category)&&(item.display==="2")){%>	
+	<%=item.subtitle%>
+	<%}});}%>	
+								</p>
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--==========================================================================================================--> <h6 id="first"></h6>
+                <div   style="margin:10em;"></div>
+                <h1 id="start" style="font-size: 10em;margin-left: 10px;margin-bottom: 0;font-family: 'Barlow', sans-serif;
+                                      <%if(back[0]){%>color:<%=back[0].tcolor%><%}%><%if(!back[0]){%>color:#000000<%}%>;" > Say hi.</h1>
+                <section class="box special features" style="<%if(back[0]){%>background-color:<%=back[0].color%><%}%><%if(!back[0]){%>background-color:#fffaf0<%}%>;" >
+                    <div class="features-row" style="background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+                        <section>
+                            <div class="slideanim dang">
+                                <div style="margin: 7em auto;" class="ui link card">
+                                    <a class="image" href="#">
+										<%if(userr[0]){%>
+                                        <img src="<%=userr[0].image%>"><%}%>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                        <section  ><div class="slideanim dang" style="padding-right:3vw;"><header class="major">
+                            <br />
+
+                            <h2 style="color:white">
+                               <%-userr[0].oneliner%>
+                            </h2>
+
+                            <p style="color:white;font-size: 2rem;" >
+                               <%-userr[0].desc%>
+                            </p>
+                            <p>
+                                <a href="#second" class="ui secondary button">Contact me</a>
+                            </p>
+                            </header></div></section>
+                    </div>
+                </section>
+                <!--==========================================================================================================-->
+            </section>
+            <h1 id="second"></h1>
+            <!-- CTA -->
+            <section id="cta" style="background: #136a8a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                <h2>Contact Me At</h2>
+				<a class="ui secondary button" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<%=userr[0].email%>">E-mail</a>
+                
+<!---->
+            </section>
+
+            <!-- Footer -->
+            <footer id="footer" style="background-color: black;color: white;">
+                <ul class="icons">
+                    <li><a href="<%=userr[0].twitter%>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="<%=userr[0].facebook%>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="<%=userr[0].insta%>" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="<%=userr[0].github%>" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="<%=userr[0].linkedin%>" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled. All rights reserved.</li><li><a href="https://www.linkedin.com/in/subhadeepchoudhuri">Design: Subhadeep Choudhuri</a></li>
+                </ul>
+            </footer>
+
+        </div>
+<%}%>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/js/float-panel.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.dropotron.min.js"></script>
+        <script src="/js/jquery.scrollex.min.js"></script>
+        <script src="/js/browser.min.js"></script>
+        <script src="/js/breakpoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+
+    </body>
+</html>

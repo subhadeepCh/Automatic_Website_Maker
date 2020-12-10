@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><%if(user){%>
+		<%=user.name.toUpperCase()%><%}%>
+		<%if(!(user)){%>
+			COMING SOON
+		<%}%>
+		</title>
+		<link rel="shortcut icon" href="../images/LOGO.png">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/main.css" />
+		<style type="text/css">
+			body{
+			background: #136a8a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+    </head>
+    <body class="landing is-preload">
+		
+  
+        <!--============================================================================-->
+		<div class="container text-center">
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert" style="width:90%;z-index:99999;position:relative"><%=error%></div>
+			<%}%>
+			<%if(success && success.length>0){%>
+			<div class="alert alert-success" role="alert" style="width:90%;z-index:99999;position:relative"><%=success%></div>
+			<%}%>
+		</div>
+        <div class="loaderwrapper">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>    
+        </div>
+
+        <!--===========================================================================-->
+
+        <div id="page-wrapper" style="background: #136a8a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+">
+
+            <!-- Header -->
+            <header id="header">
+				<%if(user){%>
+				 <h1><a href="/"><%=user.name.substring(0,user.name.indexOf(' '))%></a> <%=user.name.substring(user.name.indexOf(' '))%></h1>
+				<%}%>
+				<%if(!user){%>
+				<h1><a href="#">Your Name</a></h1><%}%>
+                <nav id="nav">
+                    <ul>
+						<%if(currentuser){%>
+						<li>Joined as : <%=currentuser.username%></li>
+						<%}%>
+                        <li><a href="/">Overview</a></li>
+                       
+						<%if(currentuser){%>
+						<li><a href="/logout" class="button">Log Out</a></li>
+						<%}%>
+                    </ul>
+                </nav>
+            </header>
+	<!--=================================================================-->
+			<section id="main" class="container" >
+				
+				<div   style="margin:20em;"></div>
+				<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui secondary image header">
+     
+      <div class="content" id="login">
+		  <h4 style="color:white">Log-in to your account</h4>
+      </div>
+    </h2>
+    <form class="ui large form" action="/login" method="POST">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="E-mail address">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-key" aria-hidden="true"></i></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+		  <div><button class="ui fluid  secondary submit button" >Login</button></div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message" >
+      New to us? <a href="#signup">Sign Up</a>
+    </div>
+  </div>
+</div>
+</section>
+<!--================================================================-->
+<!--=================================================================-->
+			<section id="main" class="container"  >
+				
+				<div   style="margin:20em;"></div>
+				<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui secondary image header">
+     
+      <div class="content" id="signup">
+        <h4 style="color:white">
+			Sign-Up to your account
+		  </h4>
+      </div>
+    </h2>
+    <form class="ui large form" action="/register" method="post" enctype="multipart/form-data">
+      <div class="ui stacked segment">
+		   <!--========================EMAIL ADDRESS====================================-->
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="E-mail address" required>
+          </div>
+        </div>
+		  <!--=========================PASSWORD===================================-->
+       <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-key" aria-hidden="true"></i></i>
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+        </div>
+		   <!--======================USERNAME======================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-user-circle" aria-hidden="true"></i></i>
+            <input type="text" name="name" placeholder="Full Name" required>
+          </div>
+        </div>
+		  <!--======================Key-to-Use-the-website=====================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-key" aria-hidden="true"></i></i>
+            <input type="text" name="secret" placeholder="Secret Key" required>
+          </div>
+        </div>
+		   <!--=====================CONTACT EMAIL======================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-user-circle" aria-hidden="true"></i></i>
+            <input type="email" name="email" placeholder="Contact Email">
+          </div>
+        </div>
+		   <!--========================TWITTER ID====================================--><div style="display:none;">
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon brands fa-twitter"></i>
+            <input type="text" name="twitter" placeholder="TwitterId" value="#">
+          </div>
+        </div>
+		   <!--===========================FACEBOOK ID=================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-facebook"></i>
+            <input type="text" name="facebook" placeholder="FacebookId" value="#">
+          </div>
+        </div>
+		   <!--============================GITHUB ID================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+            <i class="icon brands fa-github"></i>
+            <input type="text" name="github" placeholder="GithubId" value="#">
+          </div>
+        </div>
+		   <!--========================LINKED IN====================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-linkedin"></i>
+            <input type="text" name="linkedin" placeholder="LinkedIn" value="#">
+          </div>
+        </div>
+		   <!--==========================INSTAGRAM==================================-->
+		   <div class="field">
+          <div class="ui left icon input">
+           <i class="icon brands fa-instagram"></i>
+            <input type="text" name="insta" placeholder="Instagram Id" value="#">
+          </div>
+        </div>
+		   <!--==========================TAGLINE==================================-->
+		   <div class="field">
+          <div class="ui left icon input transparent disabled">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-id-card" aria-hidden="true"></i></i>
+            <input type="text" name="random" placeholder="Tagline">
+          </div>
+        </div>
+		   <div class="field">
+          <div class="ui left icon input">
+			  <textarea rows="2" name="tagline" value=""></textarea>
+			   </div>
+        </div>
+		   <!--==========================Description heading==================================-->
+		  <div class="field">
+          <div class="ui left icon input">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-audio-description" aria-hidden="true"></i></i>
+            <input type="text" name="oneliner" placeholder="Heading of Your Description" value="">
+          </div>
+        </div>
+		 
+		   <!--==========================Description==================================-->
+		    <div class="field">
+          <div class="ui left icon input transparent disabled">
+            <i class="icon"><i style="padding-top:1.1rem;"class="fa fa-cog" aria-hidden="true"></i></i>
+            <input type="text" name="random" placeholder="Description">
+          </div>
+        </div>
+		   <div class="field">
+          <div class="ui left icon input">
+			  <textarea rows="4" name="desc" value=""></textarea>
+			   </div>
+        </div>
+		   <!--===========================Image=================================--></div>
+		   <div class="field">
+          <label for="file-upload" class="custom-file-upload ui button" onclick="myfunc()">
+    Upload Profile Picture
+</label>
+<input id="file-upload" type="file" name="image" accept="image/*"/>
+        </div>
+		    <!-- =============-->
+		  <div style="margin-bottom:3px;" id="bar">
+		  <div id="myProgress">
+          <div id="myBar">10%</div>
+		   </div>
+			  </div>
+		  <!--===============-->
+		   <!--============================================================-->
+		  <div class="visib" id="vv"><button class="ui fluid  secondary submit button " onclick="move()">Sign Up</button></div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message" style="margin-bottom:2em;" >
+      Already have an account? <a href="#login">Log in</a>
+    </div>
+  </div>
+</div>
+</section>
+<!--================================================================-->
+<!-- Footer --><%if(user){%>
+            <footer id="footer" style="background-color: black;color: white;">
+                <ul class="icons">
+                    <li><a href="<%=user.twitter%>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="<%=user.facebook%>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="<%=user.insta%>" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="<%=user.github%>" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="<%=user.linkedin%>" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled. All rights reserved.</li><li><a href="https://www.linkedin.com/in/subhadeepchoudhuri">Design: Subhadeep Choudhuri</a></li>
+                </ul>
+            </footer><%}%>
+
+		</div>
+		 <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/js/float-panel.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.dropotron.min.js"></script>
+        <script src="/js/jquery.scrollex.min.js"></script>
+        <script src="/js/browser.min.js"></script>
+        <script src="/js/breakpoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+		<script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'email',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your e-mail'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Please enter a valid e-mail'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
+	</body>
+</html>

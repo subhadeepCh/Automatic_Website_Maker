@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <title><%if(user){%>
+		<%=user.name.toUpperCase()%><%}%>
+		<%if(!(user)){%>
+			COMING SOON
+		<%}%>
+		</title>
+		<link rel="shortcut icon" href="../images/LOGO.png">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/main.css" />
+		<style type="text/css">
+			body{
+				background: #606c88;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+		
+  </style>
+    </head>
+    <body class="landing is-preload">
+		
+  
+        <!--============================================================================-->
+		<div class="container text-center">
+			<%if(error && error.length>0){%>
+			<div class="alert alert-danger" role="alert" style="width:90%;z-index:99999;position:relative"><%=error%></div>
+			<%}%>
+			<%if(success && success.length>0){%>
+			<div class="alert alert-success" role="alert" style="width:90%;z-index:99999;position:relative"><%=success%></div>
+			<%}%>
+		</div>
+        <div class="loaderwrapper">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>    
+        </div>
+
+        <!--===========================================================================-->
+
+        <div id="page-wrapper" style="background: #606c88;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+">
+
+            <!-- Header -->
+            <header id="header">
+                   <h1><a href="/"><%=user.name.substring(0,user.name.indexOf(' '))%></a> <%=user.name.substring(user.name.indexOf(' '))%></h1>
+                <nav id="nav">
+                    <ul>
+						<%if(currentuser){%>
+						<li>Joined as : <%=currentuser.username%></li>
+						<%}%>
+                        <li><a href="/">Overview</a></li>
+
+						<%if(currentuser){%>
+						<li><a href="/logout" class="button">Log Out</a></li>
+						<%}%>
+                    </ul>
+                </nav>
+            </header>
+<!--================================================================-->
+<!--=================================================================-->
+			<section id="main" class="container"  >
+				
+				<div   style="margin:20vw;"></div>
+				<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui secondary image header">
+     
+      <div class="content" id="signup" style="color:white">
+       Choose Colour and Background
+      </div>
+    </h2>
+	<div class="ui message">
+	<ul>
+		<li><strong>Adding Background Image is compulsory For first time</strong></li>	
+		<li><strong>Later You can Update</strong></li>
+		<li><strong>Default Background color is : #fffaf0</strong></li>
+		<li ><strong style="color:red">Background image should be HD so that it does not pixelate</strong></li>
+		<li><strong style="color:red">It might take some time to update after submission...Please be patient</strong></li>
+	</ul>
+    </div>
+    <form class="ui large form" action="/editback?_method=PUT" method="post" enctype="multipart/form-data">
+      <div class="ui stacked segment">
+		   
+		   <!--======================COLOR Background======================================-->
+		   <div class="field"  style="padding:0;">
+			    <div class="ui left icon input transparent disabled">
+            <input type="text" name="random" placeholder="Background Colour :">
+          </div>
+          <%if(!back){%>
+            <input type="color" name="color" value="#fffaf0" style="padding:0;width:100%;cursor:pointer;border:none;height:50px;"><%}%>
+		<%if(back){%>
+            <input type="color" name="color" value="<%=back.color%>" style="padding:0;width:100%;cursor:pointer;border:none;height:50px;"><%}%>
+          
+        </div>
+		   <!--======================COLOR Text======================================-->
+		   <div class="field"  style="padding:0;">
+			    <div class="ui left icon input transparent disabled">
+            <input type="text" name="random" placeholder="Text Colour :">
+          </div>
+          <%if(!back){%>
+            <input type="color" name="tcolor" value="#000000" style="padding:0;width:100%;cursor:pointer;border:none;height:50px;"><%}%>
+		<%if(back){%>
+            <input type="color" name="tcolor" value="<%=back.tcolor%>" style="padding:0;width:100%;cursor:pointer;border:none;height:50px;"><%}%>
+          
+        </div>
+		   <!--===========================Image=================================-->
+		   <div class="field">
+          <label for="file-upload" class="custom-file-upload ui button">
+    Update Background Image
+</label>
+<input id="file-upload" type="file" name="image" accept="image/*"/>
+        </div>
+		    <!-- =============-->
+		  <div style="margin-bottom:3px;" id="bar">
+		  <div id="myProgress">
+          <div id="myBar">10%</div>
+		   </div>
+			  </div>
+		  <!--===============-->
+		   <!--============================================================-->
+		  <div><button class="ui fluid  secondary submit button " onclick="move()" >Update</button></div>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!--================================================================-->
+<!-- Footer --><div style="margin-bottom:2em"></div>
+           <footer id="footer" style="background-color: black;color: white;">
+                <ul class="icons">
+                    <li><a href="<%=user.twitter%>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="<%=user.facebook%>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="<%=user.insta%>" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="<%=user.github%>" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="<%=user.linkedin%>" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled. All rights reserved.</li><li><a href="https://www.linkedin.com/in/subhadeepchoudhuri">Design: Subhadeep Choudhuri</a></li>
+                </ul>
+            </footer>
+		</div>
+		 <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/js/float-panel.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.dropotron.min.js"></script>
+        <script src="/js/jquery.scrollex.min.js"></script>
+        <script src="/js/browser.min.js"></script>
+        <script src="/js/breakpoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+	</body>
+</html>
